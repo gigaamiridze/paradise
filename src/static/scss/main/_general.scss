@@ -1,0 +1,118 @@
+body {
+  position: relative;
+  background-color: $black;
+  &::-webkit-scrollbar {
+    width: 10px; 
+  }
+  &::-webkit-scrollbar-track {
+    background-color: $black;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: $purple;
+    border-radius: 5px;
+  }
+  .horizontal-block {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 0 50px;
+    z-index: 10;
+    @include flex-property(flex, space-between, center);
+    h2 {
+      @include text-property(45px, $monoton, $white, uppercase);
+    }
+    .navigation {
+      @include flex-property(flex, space-between, center);
+      .endpoint {
+        position: relative;
+        cursor: pointer;
+        padding: 40px 25px;
+        @include transition(all, 0.2s, ease);
+        &::after {
+          content: "";
+          display: none;
+          width: 100%;
+          height: 2px;
+          background-color: $purple;
+          border-radius: 5px;
+          position: absolute;
+          left: 0;
+          bottom: 0;
+        }
+        &:hover::after {
+          display: block;
+        }
+        span {
+          @include text-property(15px, $openSans, $grey1, capitalize);
+        }
+      }
+    }
+    .social-icons {
+      @include flex-property(flex, space-between, center);
+      gap: 4px;
+      a {
+        width: 25px;
+        height: 25px;
+        background-color: $grey;
+        border-radius: 50%;
+        @include flex-property(flex, center, center);
+        @include transition(background-color, 0.3s, ease-in-out);
+        &:hover {
+          background-color: $purple;
+        }
+        &::before {
+          font-weight: $regular;
+          @include text-property(13px, "FontAwesome", $black, none);
+          @include transition(color, 0.3s, ease-in-out);
+        }
+        &:hover::before {
+          color: $white;
+        }
+      }
+      .youtube::before {
+        content: "\f167";
+      }
+      .instagram::before {
+        content: "\f16d";
+      }
+      .twitter::before {
+        content: "\f099";
+      }
+      .facebook::before {
+        content: "\f39e";
+      }
+      .mail::before {
+        content: "\f0e0";
+      }
+    }
+  }
+}
+
+.container {
+  max-width: 930px;
+  margin: 0 auto;
+  @include transition(all, 0.4s, ease-in-out);
+  &.more-width {
+    max-width: 1140px;
+  }
+}
+
+// 'more' button
+.button {
+  width: 80px;
+  height: 80px;
+  background-color: $white;
+  border-radius: 50%;
+  cursor: pointer;
+  @include flex-property(flex, center, center);
+  @include text-property(14px, $righteous, $dark-pink, uppercase);
+  @include transition(all, 0.25s, ease-in-out);
+  &:hover {
+    background-color: $dark-pink;
+    color: $white;
+  }
+}
+
+.flex-block {
+  @include flex-property(flex, space-between, center);
+}
