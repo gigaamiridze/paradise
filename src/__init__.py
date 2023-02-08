@@ -9,6 +9,10 @@ def create_app():
     register_extensions(app)
     register_blueprints(app)
     login_manager.login_view = 'user.sign_in'
+
+    with app.app_context():
+        db.create_all()
+
     return app
 
 def register_extensions(app):
